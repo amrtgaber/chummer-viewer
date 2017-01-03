@@ -7,6 +7,9 @@ The goal of this project is to create a simple web app to view [chummer5a](https
 ## Table of Contents
 
 * [Getting Started](#getting-started)
+  * [Docker (Recommended)](#docker)
+  * [Locally](#locally)
+* [See it in action](#see-it-in-action)
 * [Installing Dependencies](#installing-dependencies)
   * [Production](#production)
   * [Development](#development)
@@ -14,23 +17,42 @@ The goal of this project is to create a simple web app to view [chummer5a](https
 
 ## Getting Started
 
-1. Clone the project
-2. Run `npm install`
-3. Run `npm start`
+### Docker
+
+To start the application run `docker-compose up`.
+
+To stop the application run `docker-compose down` in a separate terminal.
+
+If you intend on adding any dependencies you should also run `npm install`.
+
+### Locally
+
+1. Run `npm install`
+2. Run `npm start`
+
+Stop the application with `ctrl + c`.
+
+## See it in Action
+
+Navigate to `localhost:4200` in your browser.
+
+**NOTE**: For docker toolbox you must replace 'localhost' with the machine ip. You can get the machine ip with the following command.
+
+`docker-machine ip chummer-viewer`
 
 ## Installing Dependencies
 
 ### Production
 
-1. Stop dev server `ctrl + c`
+1. Stop the application
 2. Run `npm install --save <dependency>`
-3. Run `npm start`
+3. Start the application again
 
 ### Development
 
-1. Stop dev server `ctrl + c`
+1. Stop the application
 2. Run `npm install --save-dev <dependency>`
-3. Run `npm start`
+3. Start the application again
 
 ## Angular CLI
 This project was generated with [angular-cli](https://github.com/angular/angular-cli) version 1.0.0-beta.24.
