@@ -1,5 +1,3 @@
-<input type="file" (change)="fileUpload($event)">
+<input type="file" (change)="fileUpload($event.target.files)">
 
-<div>
-  The file you uploaded is {{filename}}.
-</div>
+<pre class="pre-scrollable" *ngIf="contents">{{contents}}</pre>
