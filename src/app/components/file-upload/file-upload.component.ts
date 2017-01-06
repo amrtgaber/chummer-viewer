@@ -10,15 +10,7 @@ export class FileUploadComponent implements OnInit {
   private _file: File;
   private _fileReader: FileReader = new FileReader();
 
-  // @TODO: remove this test of the json parsing
-  public characterJson;
-
-  constructor(private _characterService: CharacterService) {
-    // @TODO: remove this test of the json parsing
-    this._characterService.characterData$.subscribe( character => {
-      this.characterJson = JSON.stringify(character, null, 2);
-    });
-  }
+  constructor(private _characterService: CharacterService) { }
 
   get file() {
     return this._file;
@@ -52,6 +44,6 @@ export class FileUploadComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.fileReader.addEventListener("loadend", () => this._characterService.parseXml(this.fileReader.result) );
+    this.fileReader.addEventListener( "loadend", () => this._characterService.parseXml(this.fileReader.result) );
   }
 }
