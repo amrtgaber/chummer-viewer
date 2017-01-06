@@ -1,14 +1,24 @@
 import { Component, OnInit } from '@angular/core';
+import { CharacterService } from '../../services';
 
 @Component({
-  selector: 'app-file-upload',
+  selector: 'file-upload',
   templateUrl: './file-upload.component.html',
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
   private _file: File;
-  private _contents: string = '';
   private _fileReader: FileReader = new FileReader();
+
+  // @TODO: remove this test of the json parsing
+  public characterJson;
+
+  constructor(private _characterService: CharacterService) {
+    // @TODO: remove this test of the json parsing
+    this._characterService.characterData$.subscribe( character => {
+      this.characterJson = JSON.stringify(character, null, 2);
+    });
+  }
 
   get file() {
     return this._file;
@@ -16,14 +26,6 @@ export class FileUploadComponent implements OnInit {
 
   set file(file) {
     this._file = file;
-  }
-
-  get contents() {
-    return this._contents;
-  }
-
-  set contents(contents) {
-    this._contents = contents;
   }
 
   get fileReader() {
@@ -45,14 +47,11 @@ export class FileUploadComponent implements OnInit {
       return;
     }
 
-    // when reading is complete will fire event listener "loadend"
+    // when reading is complete this will fire event listener "loadend"
     this.fileReader.readAsText(this.file);
   }
 
   ngOnInit() {
-    this.fileReader.addEventListener("loadend", () => {
-      // @TODO: send to xml to json conversion service
-      this.contents = this.fileReader.result;
-    });
+    this.fileReader.addEventListener("loadend", () => this._characterService.parseXml(this.fileReader.result) );
   }
 }

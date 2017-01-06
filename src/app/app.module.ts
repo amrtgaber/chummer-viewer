@@ -3,8 +3,10 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 
+import { CharacterService } from './services';
+
 import { AppComponent } from './app.component';
-import { FileUploadComponent } from './file-upload/file-upload.component';
+import { FileUploadComponent } from './components';
 
 @NgModule({
   declarations: [
@@ -16,7 +18,9 @@ import { FileUploadComponent } from './file-upload/file-upload.component';
     FormsModule,
     HttpModule
   ],
-  providers: [],
+  providers: [
+    CharacterService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
