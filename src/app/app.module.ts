@@ -6,12 +6,17 @@ import { HttpModule } from '@angular/http';
 import { CharacterService } from './services';
 
 import { AppComponent } from './app.component';
-import { FileUploadComponent } from './components';
+
+import {
+  FileUploadComponent,
+  NameComponent
+} from './components';
 
 @NgModule({
   declarations: [
     AppComponent,
-    FileUploadComponent
+    FileUploadComponent,
+    NameComponent
   ],
   imports: [
     BrowserModule,
