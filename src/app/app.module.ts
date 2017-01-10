@@ -9,14 +9,16 @@ import { AppComponent } from './app.component';
 
 import {
   FileUploadComponent,
-  NameComponent
+  NameComponent,
+  CharacterDetailComponent
 } from './components';
 
 @NgModule({
   declarations: [
     AppComponent,
     FileUploadComponent,
-    NameComponent
+    NameComponent,
+    CharacterDetailComponent,
   ],
   imports: [
     BrowserModule,
