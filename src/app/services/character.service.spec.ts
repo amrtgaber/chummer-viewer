@@ -1,16 +1,16 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Xml2JsonService } from './xml2json.service';
+import { CharacterService } from './character.service';
 
-describe('Xml2jsonService', () => {
+describe('CharacterService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [Xml2jsonService]
+      providers: [CharacterService]
     });
   });
 
-  it('should ...', inject([Xml2jsonService], (service: Xml2jsonService) => {
+  it('should ...', inject([CharacterService], (service: CharacterService) => {
     expect(service).toBeTruthy();
   }));
 });

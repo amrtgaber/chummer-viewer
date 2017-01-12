@@ -34,7 +34,7 @@ export class FileUploadComponent implements OnInit {
     this.file = files[0];
 
     // very simple check for chummer file type
-    if( !this.file.name.endsWith('.chum5') ) {
+    if( !this.file.name.endsWith('.chum5') || this.file.name.length <= '.chum5'.length ) {
       console.error('Not a chummer file');
       return;
     }
