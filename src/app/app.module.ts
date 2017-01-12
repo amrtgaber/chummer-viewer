@@ -18,7 +18,7 @@ import {
     AppComponent,
     FileUploadComponent,
     NameComponent,
-    CharacterDetailComponent,
+    CharacterDetailComponent
   ],
   imports: [
     BrowserModule,
