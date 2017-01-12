@@ -2,6 +2,7 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
 
 import { CharacterService } from '../../services';
 
@@ -15,9 +16,16 @@ describe('NameComponent', () => {
   let characterService: CharacterService;
 
   beforeEach(async(() => {
+    const characterServiceStub = {
+      parsedSource: new Subject<{ name: string, alias: string }>(),
+      characterData$: null
+    };
+
+    characterServiceStub.characterData$ = characterServiceStub.parsedSource.asObservable();
+
     TestBed.configureTestingModule({
       declarations: [ NameComponent ],
-      providers: [ CharacterService ]
+      providers: [ { provide: CharacterService, useValue: characterServiceStub } ]
     })
     .compileComponents();
   }));
@@ -36,6 +44,27 @@ describe('NameComponent', () => {
   });
 
   it('should update the name correctly', () => {
-    // @TODO: mock characterData$ observable
+    let aliasElement = fixture.debugElement.query(By.css('.alias')).nativeElement;
+    let nameElement = fixture.debugElement.query(By.css('.name')).nativeElement;
+    fixture.detectChanges();
+
+    // starts with empty alias and name
+    expect(component.alias).toBe('');
+    expect(component.name).toBe('');
+
+    expect(aliasElement.textContent).toMatch(/\s*/);
+    expect(nameElement.textContent).toMatch(/\s*/);
+
+    // emit character data
+    let testCharacter = { name: 'Test Name', alias: 'Test Alias' };
+    characterService.parsedSource.next(testCharacter);
+    fixture.detectChanges();
+
+    // update alias and name
+    expect(component.alias).toBe(testCharacter.alias);
+    expect(component.name).toBe(testCharacter.name);
+
+    expect(aliasElement.textContent).toContain(testCharacter.alias);
+    expect(nameElement.textContent).toContain(testCharacter.name);
   });
 });

@@ -23,4 +23,8 @@ export class CharacterService {
   set character(character) {
     this._character = character;
   }
+
+  get parsedSource() {
+    return this._parsedSource;
+  }
 }

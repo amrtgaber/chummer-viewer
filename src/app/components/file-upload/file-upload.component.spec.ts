@@ -81,7 +81,7 @@ describe('FileUploadComponent', () => {
     expect(spy.calls.any()).toBe(false);
   });
 
-  it('should call parseXml if correct file is uploaded', () => {
+  it('should call readAsText if correct file type is uploaded', () => {
     let testFile = new File([''], 'simple.chum5');
     component.fileUpload([testFile]);
     expect(spy.calls.any()).toBe(true);
