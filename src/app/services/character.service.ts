@@ -10,10 +10,17 @@ export class CharacterService {
   public characterData$ = this._parsedSource.asObservable();
 
   parseXml(xml: string) {
-    parseString(xml, { explicitArray: false }, (err, json) => {
-      console.log(json.character);
-      this._parsedSource.next(json.character);
-    });
+    parseString(xml, { explicitArray: false }, (err, json) => this.processCharacterData(err, json));
+  }
+
+  processCharacterData(err, json) {
+    if ( err ) {
+      console.error(err);
+      return;
+    }
+    
+    console.log(json.character);
+    this.parsedSource.next(json.character);
   }
 
   get character() {
