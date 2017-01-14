@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../../services';
 
 @Component({
-  selector: 'name',
+  selector: 'app-name',
   templateUrl: './name.component.html',
   styleUrls: ['./name.component.scss']
 })

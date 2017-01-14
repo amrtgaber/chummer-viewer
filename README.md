@@ -1,6 +1,6 @@
 # Chummer Viewer
 
-[![Dependency Status](https://gemnasium.com/badges/github.com/amrtgaber/chummer-viewer.svg)](https://gemnasium.com/github.com/amrtgaber/chummer-viewer) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
+[![Build Status](https://travis-ci.org/amrtgaber/chummer-viewer.svg?branch=master)](https://travis-ci.org/amrtgaber/chummer-viewer) [![Coverage Status](https://coveralls.io/repos/github/amrtgaber/chummer-viewer/badge.svg?branch=master)](https://coveralls.io/github/amrtgaber/chummer-viewer?branch=master) [![Dependency Status](https://gemnasium.com/badges/github.com/amrtgaber/chummer-viewer.svg)](https://gemnasium.com/github.com/amrtgaber/chummer-viewer) [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](https://opensource.org/licenses/MIT)
 
 The goal of this project is to create a simple web app to view [chummer5a](https://github.com/chummer5a/chummer5a) character files. Currently a work in progress.
 
