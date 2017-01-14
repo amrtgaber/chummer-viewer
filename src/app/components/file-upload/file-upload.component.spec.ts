@@ -18,13 +18,9 @@ describe('FileUploadComponent', () => {
   let characterService: CharacterService;
 
   beforeEach(async(() => {
-    const characterServiceStub = {
-      parseXml: function(xml: string) { }
-    };
-
     TestBed.configureTestingModule({
       declarations: [ FileUploadComponent ],
-      providers: [ { provide: CharacterService, useValue: characterServiceStub } ]
+      providers: [ CharacterService ]
     })
     .compileComponents();
   }));
