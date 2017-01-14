@@ -18,9 +18,11 @@ export class CharacterService {
       console.error(err);
       return;
     }
-    
-    console.log(json.character);
-    this.parsedSource.next(json.character);
+
+    this.character = json.character;
+
+    console.log(this.character);
+    this.parsedSource.next(this.character);
   }
 
   get character() {
