@@ -31,5 +31,5 @@ describe('CharacterService', () => {
     characterService.processCharacterData(null, { character: 'character data' });
     expect(characterService.character).toBe('character data');
     expect(spy.calls.any()).toBe(true);
-  })
+  });
 });
