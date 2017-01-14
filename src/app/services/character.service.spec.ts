@@ -1,16 +1,33 @@
 /* tslint:disable:no-unused-variable */
 
 import { TestBed, async, inject } from '@angular/core/testing';
-import { Xml2JsonService } from './xml2json.service';
+import { CharacterService } from './character.service';
+import { Spy } from 'jasmine-core';
 
-describe('Xml2jsonService', () => {
+describe('CharacterService', () => {
+  let characterService: CharacterService;
+  let spy: Spy;
+
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [Xml2jsonService]
+      providers: [CharacterService]
     });
+
+    characterService = TestBed.get(CharacterService);
+    spy = spyOn(characterService.parsedSource, 'next');
   });
 
-  it('should ...', inject([Xml2jsonService], (service: Xml2jsonService) => {
+  it('should ...', inject([CharacterService], (service: CharacterService) => {
     expect(service).toBeTruthy();
   }));
+
+  it('should not emit character data on parse error', () => {
+    characterService.processCharacterData({ message: 'parsing error' }, {});
+    expect(spy.calls.any()).toBe(false);
+  });
+
+  it('should emit character data on parse success', () => {
+    characterService.processCharacterData(null, { character: 'character data' });
+    expect(spy.calls.any()).toBe(true);
+  })
 });
