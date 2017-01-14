@@ -23,11 +23,13 @@ describe('CharacterService', () => {
 
   it('should not emit character data on parse error', () => {
     characterService.processCharacterData({ message: 'parsing error' }, {});
+    expect(characterService.character).toBeFalsy();
     expect(spy.calls.any()).toBe(false);
   });
 
   it('should emit character data on parse success', () => {
     characterService.processCharacterData(null, { character: 'character data' });
+    expect(characterService.character).toBe('character data');
     expect(spy.calls.any()).toBe(true);
   })
 });
