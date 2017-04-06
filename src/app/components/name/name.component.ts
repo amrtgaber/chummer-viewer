@@ -8,8 +8,8 @@ import { CharacterService } from '../../services';
 })
 export class NameComponent implements OnInit {
 
-  private _name: string = '';
-  private _alias: string = '';
+  private _name = '';
+  private _alias = '';
 
   constructor(private _characterService: CharacterService) { }
 
