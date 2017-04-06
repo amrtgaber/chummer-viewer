@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../../services';
 
 @Component({
-  selector: 'name',
+  selector: 'app-name',
   templateUrl: './name.component.html',
   styleUrls: ['./name.component.scss']
 })
 export class NameComponent implements OnInit {
 
-  private _name: string = '';
-  private _alias: string = '';
+  private _name = '';
+  private _alias = '';
 
   constructor(private _characterService: CharacterService) { }
 
