@@ -8,7 +8,8 @@ import { AppComponent } from './app.component';
 
 import {
   FileUploadComponent,
-  NameComponent
+  NameComponent,
+  CharacterDetailComponent
 } from './components';
 
 describe('AppComponent', () => {
@@ -17,7 +18,8 @@ describe('AppComponent', () => {
       declarations: [
         AppComponent,
         FileUploadComponent,
-        NameComponent
+        NameComponent,
+        CharacterDetailComponent
       ],
       providers: [
         CharacterService
