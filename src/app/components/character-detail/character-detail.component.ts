@@ -2,46 +2,48 @@ import { Component, OnInit } from '@angular/core';
 import { CharacterService } from '../../services';
 
 @Component({
-  selector: 'character-detail',
+  selector: 'app-character-detail',
   templateUrl: './character-detail.component.html',
   styleUrls: ['./character-detail.component.scss']
 })
 export class CharacterDetailComponent implements OnInit {
 
-  private _description: string = '';
-  private _background: string = '';
-  private _concept: string = '';
-  private _notes: string = '';
-  private _sex: string = '';
-  private _eyes: string = '';
-  private _hair: string = '';
-  private _skin: string = '';
-  private _age: number = 0;
-  private _weight: number = 0;
+  private _age = '';
+  private _background = '';
+  private _concept = '';
+  private _description = '';
+  private _eyes = '';
+  private _hair = '';
+  private _height = '';
+  private _notes = '';
+  private _sex = '';
+  private _skin = '';
+  private _weight = '';
 
   constructor(private _characterService: CharacterService) { }
 
   ngOnInit() {
     this._characterService.characterData$.subscribe( character => {
-      this.description = character.description;
+      this.age = character.age;
       this.background = character.background;
       this.concept = character.concept;
-      this.notes = character.notes;
-      this.sex = character.sex;
+      this.description = character.description;
       this.eyes = character.eyes;
       this.hair = character.hair;
+      this.height = character.height;
+      this.notes = character.notes;
+      this.sex = character.sex;
       this.skin = character.skin;
-      this.age = character.age;
       this.weight = character.weight;
     });
   }
 
-  get description() {
-    return this._description;
+  get age() {
+    return this._age;
   }
 
-  set description(description: string) {
-    this._description = description;
+  set age(age: string) {
+    this._age = age;
   }
 
   get background() {
@@ -60,20 +62,12 @@ export class CharacterDetailComponent implements OnInit {
     this._concept = concept;
   }
 
-  get notes() {
-    return this._notes;
+  get description() {
+    return this._description;
   }
 
-  set notes(notes: string) {
-    this._notes = notes;
-  }
-
-  get sex() {
-    return this._sex;
-  }
-
-  set sex(sex: string) {
-    this._sex = sex;
+  set description(description: string) {
+    this._description = description;
   }
 
   get eyes() {
@@ -92,27 +86,43 @@ export class CharacterDetailComponent implements OnInit {
     this._hair = hair;
   }
 
+  get height() {
+    return this._height;
+  }
+
+  set height(height: string) {
+    this._height = height;
+  }
+
+  get notes() {
+    return this._notes;
+  }
+
+  set notes(notes: string) {
+    this._notes = notes;
+  }
+
+  get sex() {
+    return this._sex;
+  }
+
+  set sex(sex: string) {
+    this._sex = sex;
+  }
+
   get skin() {
-    return this._hair;
+    return this._skin;
   }
 
   set skin(skin: string) {
     this._skin = skin;
   }
 
-  get age() {
-    return this._age;
-  }
-
-  set age(age: number) {
-    this._age = age;
-  }
-
   get weight() {
     return this._weight;
   }
 
-  set weight(weight: number) {
+  set weight(weight: string) {
     this._weight = weight;
   }
 }

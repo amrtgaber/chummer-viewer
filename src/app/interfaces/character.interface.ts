@@ -1,14 +1,19 @@
 export interface Character {
-  alias: string;
+
+  /* Character Detail */
+  age: string;
   background: string;
   concept: string;
   description: string;
-  name: string;
-  notes: string;
-  sex: string;
   eyes: string;
   hair: string;
+  height: string;
+  notes: string;
+  sex: string;
   skin: string;
-  age: number;
-  weight: number;
+  weight: string;
+
+  /* Name */
+  alias: string;
+  name: string;
 }
