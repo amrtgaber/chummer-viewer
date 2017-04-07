@@ -16,8 +16,13 @@ describe('NameComponent', () => {
   let characterService: CharacterService;
 
   beforeEach(async(() => {
+    interface CharacterName {
+      name: string;
+      alias: string;
+    }
+
     const characterServiceStub = {
-      parsedSource: new Subject<{ name: string, alias: string }>(),
+      parsedSource: new Subject<CharacterName>(),
       characterData$: null
     };
 
