@@ -1,16 +1,15 @@
 /* tslint:disable:no-unused-variable */
-
 import { TestBed, async } from '@angular/core/testing';
 import { FileUploadModule } from 'ng2-file-upload';
 
 import { CharacterService } from './services';
-
 import { AppComponent } from './app.component';
 
 import {
+  CharacterDetailComponent,
   FileUploadComponent,
   NameComponent,
-  CharacterDetailComponent
+  NavbarComponent
 } from './components';
 
 describe('AppComponent', () => {
@@ -18,9 +17,10 @@ describe('AppComponent', () => {
     TestBed.configureTestingModule({
       declarations: [
         AppComponent,
+        CharacterDetailComponent,
         FileUploadComponent,
         NameComponent,
-        CharacterDetailComponent
+        NavbarComponent
       ],
       imports: [
         FileUploadModule
