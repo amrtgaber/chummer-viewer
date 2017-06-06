@@ -1,0 +1,11 @@
+.drop-zone {
+  border: dotted 3px #d3d3d3;
+  height: 100px;
+
+}
+
+.file-over {
+  @extend .drop-zone;
+  border-color: darken(#d3d3d3, 10%);
+  background-color: #d3d3d3;
+}

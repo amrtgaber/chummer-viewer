@@ -1,1 +1,10 @@
-<input type="file" (change)="fileUpload($event.target.files)">
+<input type="file" ng2FileSelect [uploader]="uploader" (change)="fileUpload()">
+
+<div ng2FileDrop
+     [uploader]="uploader"
+     (drop)="fileUpload()"
+     (fileOver)="fileOverDropZone($event)"
+     [ngClass]="{'file-over': hasFileOverDropZone}"
+     class="drop-zone">
+  Drop zone
+</div>

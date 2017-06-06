@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FileUploader } from 'ng2-file-upload';
 import { CharacterService } from '../../services';
 
 @Component({
@@ -7,6 +8,9 @@ import { CharacterService } from '../../services';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent implements OnInit {
+  public uploader: FileUploader = new FileUploader({});
+  public hasFileOverDropZone = false;
+
   private _file: File;
   private _fileReader: FileReader = new FileReader();
 
@@ -24,14 +28,18 @@ export class FileUploadComponent implements OnInit {
     return this._fileReader;
   }
 
-  fileUpload(files) {
-    // if file doesn't exist abort
-    if ( !files || !files[0] ) {
-      console.warn('No file uploaded');
+  /**
+   * Do file upload. If successful will update character service.
+   */
+  fileUpload() {
+    // I couldn't find an easier way to upload the file directly to the frontend.
+    try {
+      this.file = this.uploader.queue.pop()._file;
+    } catch (err) {
+      console.warn('File failed to upload');
+      console.error(err);
       return;
     }
-
-    this.file = files[0];
 
     // very simple check for chummer file type
     if ( !this.file.name.endsWith('.chum5') || this.file.name.length <= '.chum5'.length ) {
@@ -45,5 +53,13 @@ export class FileUploadComponent implements OnInit {
 
   ngOnInit() {
     this.fileReader.addEventListener( 'loadend', () => this._characterService.parseXml(this.fileReader.result) );
+  }
+
+  /**
+   * Updates a boolean if there is a file over the drop zone. Used for styling.
+   * @param  {boolean} hasFileOver Event when item is dragged over drop zone.
+   */
+  public fileOverDropZone(hasFileOver: boolean) {
+    this.hasFileOverDropZone = hasFileOver;
   }
 }
